@@ -1,0 +1,42 @@
+import socios.*
+import viajes.*
+import gimnasio.*
+
+describe "test parte 5, Actividades que le atraen a cada socio y parte 6, Actividades recomendadas para socios" {
+	//viajes
+	const sanBernardo = new ViajesDePlaya(largoDePlaya = 1500)
+	const buenosAires = new ExcursionACiudad(cantDeAtracciones = 6)
+	//gimnasia
+	const claseDeGim = new ClasesDeGimnasia()
+	//socios
+	const martin = new SocioTranquilo(maximoDeActividades = 3, edad = 26, idiomasQueHabla=["español", "ingles"])
+	const julian = new SocioCoherente(maximoDeActividades = 7, edad = 24, idiomasQueHabla=["español", "ingles"])
+	const camila = new SocioRelajado (maximoDeActividades = 13, edad = 20, idiomasQueHabla=["español"])
+	
+	method initialize() {
+		julian.realizarActividad(sanBernardo)
+	}
+	
+	//martin
+	test "a martin no le atrae la actividad claseDeGim" {
+		assert.notThat(martin.leAtraeLaActividad(claseDeGim))
+	}
+	
+	//julian
+	test "a julian le atrae el viaje de playa en sanBernardo" {
+		assert.that(julian.leAtraeLaActividad(sanBernardo))
+	}
+	
+	//camila
+	test "a camila le atrae la excursion a BuenosAires" {
+		assert.notThat(camila.leAtraeLaActividad(buenosAires))
+	}
+	
+	test "la actividad de viaje a la playa de sanBernardo es recomendada para camila" {
+		assert.notThat(sanBernardo.esRecomendadaPara(camila))
+	}
+	
+	test "la claseDeGim es recomendada para julian" {
+		assert.that(claseDeGim.esRecomendadaPara(julian))
+	}
+}

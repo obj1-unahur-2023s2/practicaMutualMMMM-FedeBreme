@@ -1,0 +1,40 @@
+import socios.*
+import viajes.*
+import gimnasio.*
+
+describe "test parte 4, Socios, agregar actividad" {
+	//viajes
+	const sanBernardo = new ViajesDePlaya(largoDePlaya = 1500)
+	const buenosAires = new ExcursionACiudad(cantDeAtracciones = 6)
+	const rioDeJaneiro = new ExcursionACiudadTropical(cantDeAtracciones = 10)
+	const cordoba = new SalidaDeTrekking(kilometrosDeSendero = 100, diasDeSolPorAnio = 150)
+	//gimnasia
+	const claseDeGim = new ClasesDeGimnasia()
+	//cliente
+	const roque = new Socios(maximoDeActividades = 5, edad = 41, idiomasQueHabla=["español", "ingles", "portugues"])
+	
+	method initialize() {
+		roque.realizarActividad(sanBernardo)
+		roque.realizarActividad(buenosAires)
+		roque.realizarActividad(rioDeJaneiro)
+		roque.realizarActividad(cordoba)
+		roque.realizarActividad(claseDeGim)
+	}
+	
+	test "roque no es adorador del sol" {
+		assert.notThat(roque.esAdoradorDelSol())
+	}
+	
+	test "las actividades forzadas de roque son sanBernardo, cordoba, claseDeGim" {
+		assert.equals([sanBernardo, buenosAires, cordoba, claseDeGim], roque.actividadesEsforzadas())
+	}
+	
+	test "si roque quiere realizar el viaje a tucuman no puede" {
+		const tucuman = new ExcursionACiudad(cantDeAtracciones = 3) 
+		assert.throwsException({roque.realizarActividad(tucuman)})
+	}
+	
+	test "a roque le atrae cualquier actividad que realizo" {
+		assert.that(roque.leAtraeLaActividad(roque.actividadesQueRealizo()))
+	}
+}

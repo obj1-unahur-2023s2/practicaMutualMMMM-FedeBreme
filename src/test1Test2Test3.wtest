@@ -1,0 +1,115 @@
+import gimnasio.*
+import viajes.*
+
+describe "test parte 1, viajes, parte 2, Viajes interesantes y parte 3, Clases de gimnasia" {
+	//viajes
+	const sanBernardo = new ViajesDePlaya(largoDePlaya = 1500)
+	const buenosAires = new ExcursionACiudad(cantDeAtracciones = 6)
+	const rioDeJaneiro = new ExcursionACiudadTropical(cantDeAtracciones = 10)
+	const cordoba = new SalidaDeTrekking(kilometrosDeSendero = 100, diasDeSolPorAnio = 150)
+	//gimnasia
+	const claseDeGim = new ClasesDeGimnasia()
+	
+	method initialize() {
+		//viajes
+		sanBernardo.sumarIdiomas(["portugues", "español"])
+		buenosAires.sumarIdiomas(["portugues", "español", "ingles"])
+		rioDeJaneiro.sumarIdiomas(["portugues", "español"])
+		cordoba.sumarIdiomas(["español", "ingles"])
+		//gimnasia
+		claseDeGim.sumarIdiomas(["español"])
+	}
+	
+	//sanBernardo
+	
+	test "los dias que lleva el viaje a sanBernardo son = 3" {
+		assert.equals(3, sanBernardo.diasQueLlevaUnViaje())
+	}
+	
+	test "el viaje a sanBernardo implica esfuerzo" {
+		assert.that(sanBernardo.implicaEsfuerzo())
+	}
+	
+	test "el viaje a sanBernardo sirve para broncearse" {
+		assert.that(sanBernardo.sirveParaBroncearse())
+	}
+	
+	test "el viaje a sanBernardo es un viaje interesante" {
+		assert.that(sanBernardo.esViajeInteresante())
+	}
+	
+	//buenosAires
+	
+	test "los dias que lleva el a buenosAires viaje son = 3" {
+		assert.equals(3, buenosAires.diasQueLlevaUnViaje())
+	}
+	
+	test "el viaje a buenosAires implica esfuerzo" {
+		assert.that(buenosAires.implicaEsfuerzo())
+	}
+	
+	test "el viaje a buenosAires no sirve para broncearse" {
+		assert.notThat(buenosAires.sirveParaBroncearse())
+	}
+	
+	test "el viaje a buenosAires es un viaje interesante" {
+		assert.that(buenosAires.esViajeInteresante())
+	}
+	
+	//rioDeJaneiro
+	
+	test "los dias que lleva el a rioDeJaneiro viaje son = 5.5" {
+		rioDeJaneiro.cantDeAtracciones()
+		assert.equals(5.5, rioDeJaneiro.diasQueLlevaUnViaje())
+	}
+	
+	test "el viaje a rioDeJaneiro no implica esfuerzo" {
+		rioDeJaneiro.cantDeAtracciones()
+		assert.notThat(rioDeJaneiro.implicaEsfuerzo())
+	}
+	
+	test "el viaje a rioDeJaneiro sirve para broncearse" {
+		rioDeJaneiro.cantDeAtracciones()
+		assert.that(rioDeJaneiro.sirveParaBroncearse())
+	}
+	
+	test "el viaje a rioDeJaneiro es un viaje interesante" {
+		assert.that(buenosAires.esViajeInteresante())
+	}
+	
+	//cordoba
+	
+	test "los dias que lleva el a cordoba viaje son = 2" {
+		assert.equals(2, cordoba.diasQueLlevaUnViaje())
+	}
+	
+	test "el viaje a cordoba implica esfuerzo" {
+		assert.that(cordoba.implicaEsfuerzo())
+	}
+	
+	test "el viaje a cordoba no sirve para broncearse" {
+		assert.notThat(cordoba.sirveParaBroncearse())
+	}
+	
+	test "el viaje a cordoba es un viaje interesante" {
+		assert.that(cordoba.esViajeInteresante())
+	}
+	
+	//ClasesDeGimnasia
+	
+	test "los dias que lleva un viaje a la claseDeGim = 1" {
+		assert.equals(1, claseDeGim.diasQueLlevaUnViaje())
+	}
+	
+	test "el viaje a la claseDeGim no sirve para broncearse" {
+		assert.notThat(claseDeGim.sirveParaBroncearse())
+	}
+	
+	test "el viaje a la claseDeGim implica esfuerzo" {
+		assert.that(claseDeGim.implicaEsfuerzo())
+	}
+	
+	test "el viaje a la claseDeGim no es un viaje interesante" {
+		assert.notThat(claseDeGim.esViajeInteresante())
+	}
+}
