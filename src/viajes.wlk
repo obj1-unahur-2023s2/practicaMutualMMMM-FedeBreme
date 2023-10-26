@@ -64,7 +64,7 @@ class ExcursionACiudad inherits Viajes {
 class ExcursionACiudadTropical inherits ExcursionACiudad {
 	
 	override method cantDeAtracciones() {
-		cantDeAtracciones += 1
+		return = cantDeAtracciones += 1
 	}
 	
 	override method sirveParaBroncearse() = true
