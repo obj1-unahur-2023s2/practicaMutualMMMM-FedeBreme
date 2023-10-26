@@ -18,7 +18,7 @@ class Socios {
 	}
 	
 	method realizarActividad(unaActividad) {
-		if (actividadesQueRealizo.size() == maximoDeActividades) {
+		if (actividadesQueRealizo.size() >= maximoDeActividades) {
 			self.error("No puede realizar mas actividades")
 		} else {
 			actividadesQueRealizo.add(unaActividad)
