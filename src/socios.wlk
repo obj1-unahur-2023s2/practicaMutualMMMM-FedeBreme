@@ -50,6 +50,6 @@ class SocioCoherente inherits Socios {
 class SocioRelajado inherits Socios {
 	
 	method leAtraeLaActividad(unaActividad) {
-		return unaActividad.idiomas().any({a => idiomasQueHabla.contains({i => i == a})})
+		return not idiomas.intersection(unaActividad.idiomas()).isEmpty()
 	}
 }
